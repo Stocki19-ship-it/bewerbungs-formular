@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOXUS — Bewerbung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Uncial+Antiqua&display=swap');
+
+  :root {
+    --purple: #8b3dff;
+    --purple-bright: #b46bff;
+    --purple-dark: #3a1166;
+    --bg: #0a0614;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cinzel', serif;
+    background: var(--bg);
+    color: #e6d9ff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    background-image:
+      radial-gradient(ellipse at 50% -10%, rgba(139, 61, 255, 0.25), transparent 60%),
+      radial-gradient(ellipse at 50% 110%, rgba(139, 61, 255, 0.15), transparent 60%);
+  }
+
+  .bat {
+    position: fixed;
+    font-size: 20px;
+    opacity: 0;
+    pointer-events: none;
+    animation: flyAcross linear infinite;
+    z-index: 0;
+  }
+  @keyframes flyAcross {
+    0%   { transform: translateX(-10vw) translateY(0) scale(0.6); opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.7; }
+    100% { transform: translateX(110vw) translateY(-80px) scale(1.1); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 560px;
+    background: linear-gradient(160deg, rgba(30, 14, 55, 0.92), rgba(12, 6, 24, 0.95));
+    border: 1px solid var(--purple-dark);
+    border-radius: 14px;
+    padding: 40px 35px 35px;
+    box-shadow:
+      0 0 40px rgba(139, 61, 255, 0.25),
+      0 0 120px rgba(139, 61, 255, 0.12),
+      inset 0 0 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    animation: cardIn 0.9s ease-out;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--purple), transparent 40%, transparent 60%, var(--purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .logo-img {
+    display: block;
+    width: 170px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(139, 61, 255, 0.55);
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(139, 61, 255, 0.4); }
+    50%      { box-shadow: 0 0 60px rgba(180, 107, 255, 0.8); }
+  }
+
+  h1 {
+    font-family: 'Uncial Antiqua', cursive;
+    text-align: center;
+    font-size: 2.6rem;
+    letter-spacing: 6px;
+    background: linear-gradient(180deg, #e9d5ff, var(--purple-bright) 55%, var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(139, 61, 255, 0.4);
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #9d7fd4;
+    margin: 8px 0 30px;
+    letter-spacing: 2px;
+  }
+
+  .field { margin-bottom: 20px; }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--purple-bright);
+    margin-bottom: 8px;
+  }
+  label .num {
+    color: #5e3a99;
+    margin-right: 6px;
+  }
+
+  input, textarea {
+    width: 100%;
+    background: rgba(10, 4, 22, 0.85);
+    border: 1px solid var(--purple-dark);
+    border-radius: 8px;
+    padding: 13px 15px;
+    color: #e6d9ff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 18px rgba(139, 61, 255, 0.4), inset 0 0 12px rgba(139, 61, 255, 0.1);
+  }
+  input::placeholder, textarea::placeholder { color: #5a4a7d; }
+
+  .row { display: flex; gap: 15px; }
+  .row .field { flex: 1; }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple), var(--purple-dark));
+    background-size: 200% 200%;
+    border: 1px solid var(--purple-bright);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.35s;
+    box-shadow: 0 0 20px rgba(139, 61, 255, 0.35);
+  }
+  button:hover:not(:disabled) {
+    background-position: 100% 100%;
+    box-shadow: 0 0 45px rgba(180, 107, 255, 0.7);
+    transform: translateY(-2px);
+    letter-spacing: 6px;
+  }
+  button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .status {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    min-height: 22px;
+  }
+  .status.ok   { color: #7dffb0; text-shadow: 0 0 15px rgba(125, 255, 176, 0.5); }
+  .status.err  { color: #ff7d9c; text-shadow: 0 0 15px rgba(255, 125, 156, 0.5); }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 2, 12, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  .overlay.show { opacity: 1; pointer-events: all; }
+
+  .overlay-box {
+    text-align: center;
+    padding: 50px 40px;
+    border: 1px solid var(--purple);
+    border-radius: 14px;
+    background: linear-gradient(160deg, #1e0e37, #0c0618);
+    box-shadow: 0 0 80px rgba(139, 61, 255, 0.5);
+    animation: cardIn 0.6s ease-out;
+  }
+  .overlay-box .skull { font-size: 4rem; animation: pulseGlow 2s infinite; }
+  .overlay-box h2 {
+    font-family: 'Uncial Antiqua', cursive;
+    color: var(--purple-bright);
+    margin: 15px 0 10px;
+    letter-spacing: 3px;
+  }
+  .overlay-box p { color: #b39ddb; font-size: 0.95rem; }
+
+  .footer-line {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: #4a3570;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<span class="bat" style="top:12%; animation-duration:14s; animation-delay:0s;">🦇</span>
+<span class="bat" style="top:25%; animation-duration:18s; animation-delay:4s;">🦇</span>
+<span class="bat" style="top:8%;  animation-duration:22s; animation-delay:9s;">🦇</span>
+<span class="bat" style="top:35%; animation-duration:16s; animation-delay:13s;">🦇</span>
+
+<div class="card">
+  <img src="logo.png" alt="Noxus Logo" class="logo-img">
+  <h1>NOXUS</h1>
+  <p class="subtitle">„Die Nacht ist unser.“ — Tritt unseren Reihen bei.</p>
+
+  <form id="applyForm">
+    <div class="field">
+      <label><span class="num">I.</span>Discord Name</label>
+      <input type="text" id="discordName" placeholder="z.B. schattenkaiser" required>
+    </div>
+
+    <div class="field">
+      <label><span class="num">II.</span>Minecraft Name</label>
+      <input type="text" id="mcName" placeholder="z.B. Schattenkaiser99" required>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label><span class="num">III.</span>Alter</label>
+        <input type="number" id="age" min="10" max="99" placeholder="z.B. 17" required>
+      </div>
+      <div class="field">
+        <label><span class="num">IV.</span>Schwächen</label>
+        <input type="text" id="weaknesses" placeholder="z.B. PvP, Redstone" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label><span class="num">V.</span>Stärken</label>
+      <input type="text" id="strengths" placeholder="z.B. Bauen, Farmen" required>
+    </div>
+
+    <div class="field">
+      <label><span class="num">VI.</span>Grund, warum du zu uns willst</label>
+      <textarea id="reason" rows="4" placeholder="Überzeuge uns..." required></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn">☠︎ Bewerbung senden ☠︎</button>
+    <div class="status" id="status"></div>
+  </form>
+
+  <div class="footer-line">Noxus Clan — Bewerbungsportal</div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-box">
+    <div class="skull">💀</div>
+    <h2>Die Nacht begrüßt dich!</h2>
+    <p>Deine Bewerbung wurde erfolgreich an den Rat der Noxus gesendet.</p>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   ⚠️  HIER DEINE DISCORD WEBHOOK URL EINTRAGEN  ⚠️
+   ══════════════════════════════════════════════════════ */
+const WEBHOOK_URL = "HIER_DEINE_WEBHOOK_URL_EINTRAGEN";
+
+const form    = document.getElementById("applyForm");
+const status  = document.getElementById("status");
+const btn     = document.getElementById("submitBtn");
+const overlay = document.getElementById("overlay");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (WEBHOOK_URL === "HIER_DEINE_WEBHOOK_URL_EINTRAGEN") {
+    status.textContent = "⚠ Webhook-URL fehlt! Bitte im Code eintragen.";
+    status.className = "status err";
+    return;
+  }
+
+  const data = {
+    discordName: document.getElementById("discordName").value.trim(),
+    mcName:      document.getElementById("mcName").value.trim(),
+    age:         document.getElementById("age").value.trim(),
+    weaknesses:  document.getElementById("weaknesses").value.trim(),
+    strengths:   document.getElementById("strengths").value.trim(),
+    reason:      document.getElementById("reason").value.trim()
+  };
+
+  btn.disabled = true;
+  btn.textContent = "Sende...";
+  status.textContent = "";
+  status.className = "status";
+
+  const embed = {
+    username: "Noxus Bewerbungsportal",
+    embeds: [{
+      title: "☠︎ Neue Bewerbung — Noxus ☠︎",
+      color: 8892574,
+      fields: [
+        { name: "💬 Discord Name",   value: data.discordName, inline: true },
+        { name: "⛏️ Minecraft Name", value: data.mcName,      inline: true },
+        { name: "🎂 Alter",          value: data.age,         inline: true },
+        { name: "💔 Schwächen",      value: data.weaknesses,  inline: false },
+        { name: "⚔️ Stärken",        value: data.strengths,   inline: false },
+        { name: "📜 Grund der Bewerbung", value: data.reason, inline: false }
+      ],
+      footer: { text: "„Die Nacht ist unser.“ — Noxus Clan" },
+      timestamp: new Date().toISOString()
+    }]
+  };
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(embed)
+    });
+
+    if (res.ok) {
+      overlay.classList.add("show");
+      form.reset();
+      setTimeout(() => overlay.classList.remove("show"), 4000);
+    } else {
+      throw new Error("HTTP " + res.status);
+    }
+  } catch (err) {
+    status.textContent = "✖ Fehler beim Senden: " + err.message;
+    status.className = "status err";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "☠︎ Bewerbung senden ☠︎";
+  }
+});
+</script>
+</body>
+</html>
