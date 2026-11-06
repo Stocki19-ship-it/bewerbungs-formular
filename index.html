@@ -3,24 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0614">
 <title>NOXUS — Bewerbung</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%230c0618' stroke='%23b46bff' stroke-width='3'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='38' fill='%23e6d9ff' font-family='serif'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Uncial+Antiqua&display=swap');
-
   :root {
     --purple: #8b3dff;
     --purple-bright: #b46bff;
     --purple-dark: #3a1166;
     --bg: #0a0614;
+    --text: #e6d9ff;
+    --muted: #b39ddb;
+    --error: #ff9bb2;
+    --success: #7dffb0;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { color-scheme: dark; }
 
   body {
-    font-family: 'Cinzel', serif;
+    font-family: 'Cinzel', Georgia, serif;
     background: var(--bg);
-    color: #e6d9ff;
+    color: var(--text);
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +37,7 @@
     background-image:
       radial-gradient(ellipse at 50% -10%, rgba(139, 61, 255, 0.25), transparent 60%),
       radial-gradient(ellipse at 50% 110%, rgba(139, 61, 255, 0.15), transparent 60%);
+    overflow-x: hidden;
   }
 
   .bat {
@@ -50,19 +60,18 @@
     z-index: 2;
     width: 100%;
     max-width: 560px;
-    background: linear-gradient(160deg, rgba(30, 14, 55, 0.92), rgba(12, 6, 24, 0.95));
+    background: linear-gradient(160deg, rgba(30, 14, 55, 0.96), rgba(12, 6, 24, 0.98));
     border: 1px solid var(--purple-dark);
     border-radius: 14px;
-    padding: 40px 35px 35px;
+    padding: 36px 35px 32px;
     box-shadow:
       0 0 40px rgba(139, 61, 255, 0.25),
       0 0 120px rgba(139, 61, 255, 0.12),
       inset 0 0 60px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
-    animation: cardIn 0.9s ease-out;
+    animation: cardIn 0.6s ease-out;
   }
   @keyframes cardIn {
-    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
@@ -79,21 +88,33 @@
     pointer-events: none;
   }
 
-  .logo-img {
-    display: block;
-    width: 170px;
-    margin: 0 auto 10px;
+  .logo-mark {
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 12px;
+    border: 2px solid var(--purple-bright);
     border-radius: 50%;
-    box-shadow: 0 0 40px rgba(139, 61, 255, 0.55);
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 35% 25%, #3a1166, #0c0618 72%);
+    box-shadow: 0 0 40px rgba(139, 61, 255, 0.55), inset 0 0 24px rgba(180, 107, 255, 0.2);
     animation: pulseGlow 3s ease-in-out infinite;
   }
+  .logo-mark span {
+    font-family: 'Uncial Antiqua', Georgia, serif;
+    font-size: 4.4rem;
+    line-height: 1;
+    color: var(--text);
+    text-shadow: 0 0 22px var(--purple-bright);
+    transform: translateY(-3px);
+  }
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 30px rgba(139, 61, 255, 0.4); }
-    50%      { box-shadow: 0 0 60px rgba(180, 107, 255, 0.8); }
+    0%, 100% { box-shadow: 0 0 30px rgba(139, 61, 255, 0.4), inset 0 0 24px rgba(180, 107, 255, 0.15); }
+    50%      { box-shadow: 0 0 60px rgba(180, 107, 255, 0.75), inset 0 0 30px rgba(180, 107, 255, 0.25); }
   }
 
   h1 {
-    font-family: 'Uncial Antiqua', cursive;
+    font-family: 'Uncial Antiqua', Georgia, serif;
     text-align: center;
     font-size: 2.6rem;
     letter-spacing: 6px;
@@ -101,32 +122,28 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 30px rgba(139, 61, 255, 0.4);
   }
 
   .subtitle {
     text-align: center;
-    font-style: italic;
     font-size: 0.9rem;
-    color: #9d7fd4;
-    margin: 8px 0 30px;
-    letter-spacing: 2px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 8px 0 28px;
+    letter-spacing: 1px;
   }
 
-  .field { margin-bottom: 20px; }
+  .field { margin-bottom: 16px; }
 
   label {
     display: block;
     font-size: 0.8rem;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--purple-bright);
     margin-bottom: 8px;
   }
-  label .num {
-    color: #5e3a99;
-    margin-right: 6px;
-  }
+  label .num { color: #9a78c9; margin-right: 6px; }
 
   input, textarea {
     width: 100%;
@@ -134,30 +151,49 @@
     border: 1px solid var(--purple-dark);
     border-radius: 8px;
     padding: 13px 15px;
-    color: #e6d9ff;
-    font-family: 'Cinzel', serif;
-    font-size: 0.95rem;
+    color: var(--text);
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.5;
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     resize: vertical;
   }
+  input { min-height: 50px; }
   input:focus, textarea:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 18px rgba(139, 61, 255, 0.4), inset 0 0 12px rgba(139, 61, 255, 0.1);
+    border-color: var(--purple-bright);
+    box-shadow: 0 0 0 3px rgba(180, 107, 255, 0.2), 0 0 18px rgba(139, 61, 255, 0.25);
   }
-  input::placeholder, textarea::placeholder { color: #5a4a7d; }
+  input::placeholder, textarea::placeholder { color: #8d78ad; opacity: 1; }
+  input[aria-invalid="true"], textarea[aria-invalid="true"] {
+    border-color: var(--error);
+    box-shadow: 0 0 0 2px rgba(255, 155, 178, 0.12);
+  }
 
   .row { display: flex; gap: 15px; }
-  .row .field { flex: 1; }
+  .row .field { flex: 1; min-width: 0; }
+
+  .field-hint, .field-error {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.76rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 6px;
+  }
+  .field-hint { color: var(--muted); }
+  .field-error { color: var(--error); min-height: 0; }
+  .field-error:not(:empty) { min-height: 18px; }
 
   button {
     width: 100%;
+    min-height: 52px;
     margin-top: 10px;
-    padding: 15px;
-    font-family: 'Cinzel', serif;
+    padding: 14px 16px;
+    font-family: 'Cinzel', Georgia, serif;
     font-weight: 800;
-    font-size: 1.05rem;
-    letter-spacing: 4px;
+    font-size: 1rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: #fff;
     background: linear-gradient(135deg, var(--purple-dark), var(--purple), var(--purple-dark));
@@ -165,202 +201,382 @@
     border: 1px solid var(--purple-bright);
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.35s;
+    transition: background-position 0.2s, box-shadow 0.2s, transform 0.2s;
     box-shadow: 0 0 20px rgba(139, 61, 255, 0.35);
   }
   button:hover:not(:disabled) {
     background-position: 100% 100%;
-    box-shadow: 0 0 45px rgba(180, 107, 255, 0.7);
+    box-shadow: 0 0 35px rgba(180, 107, 255, 0.6);
     transform: translateY(-2px);
-    letter-spacing: 6px;
   }
-  button:disabled { opacity: 0.6; cursor: not-allowed; }
+  button:focus-visible {
+    outline: 3px solid #e9d5ff;
+    outline-offset: 4px;
+  }
+  button:disabled { opacity: 0.65; cursor: wait; transform: none; }
 
   .status {
-    margin-top: 18px;
+    margin-top: 16px;
     text-align: center;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    min-height: 22px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    min-height: 24px;
   }
-  .status.ok   { color: #7dffb0; text-shadow: 0 0 15px rgba(125, 255, 176, 0.5); }
-  .status.err  { color: #ff7d9c; text-shadow: 0 0 15px rgba(255, 125, 156, 0.5); }
+  .status.ok   { color: var(--success); }
+  .status.err  { color: var(--error); }
+  .status.info { color: var(--muted); }
 
   .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(5, 2, 12, 0.9);
+    background: rgba(5, 2, 12, 0.92);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 100;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s;
+    transition: opacity 0.25s, visibility 0.25s;
+    padding: 16px;
   }
-  .overlay.show { opacity: 1; pointer-events: all; }
+  .overlay.show { opacity: 1; visibility: visible; pointer-events: all; }
 
   .overlay-box {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
     text-align: center;
-    padding: 50px 40px;
+    padding: 48px 30px 36px;
     border: 1px solid var(--purple);
     border-radius: 14px;
     background: linear-gradient(160deg, #1e0e37, #0c0618);
     box-shadow: 0 0 80px rgba(139, 61, 255, 0.5);
-    animation: cardIn 0.6s ease-out;
   }
-  .overlay-box .skull { font-size: 4rem; animation: pulseGlow 2s infinite; }
+  .overlay-box .skull { font-size: 4rem; }
   .overlay-box h2 {
-    font-family: 'Uncial Antiqua', cursive;
+    font-family: 'Uncial Antiqua', Georgia, serif;
     color: var(--purple-bright);
     margin: 15px 0 10px;
     letter-spacing: 3px;
   }
-  .overlay-box p { color: #b39ddb; font-size: 0.95rem; }
+  .overlay-box p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+  .overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    font-size: 1.6rem;
+    letter-spacing: 0;
+  }
 
   .footer-line {
-    margin-top: 25px;
+    margin-top: 24px;
     text-align: center;
     font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: #4a3570;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    color: #9a78c9;
     text-transform: uppercase;
+  }
+  .noscript {
+    color: var(--error);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 24px 12px; align-items: flex-start; }
+    .card { padding: 28px 20px 24px; }
+    .row { flex-direction: column; gap: 0; }
+    h1 { font-size: 2.15rem; }
+    .logo-mark { width: 92px; height: 92px; }
+    .logo-mark span { font-size: 3.7rem; }
+    label { letter-spacing: 1.5px; }
+    button { letter-spacing: 2px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .bat { display: none; }
   }
 </style>
 </head>
 <body>
 
-<span class="bat" style="top:12%; animation-duration:14s; animation-delay:0s;">🦇</span>
-<span class="bat" style="top:25%; animation-duration:18s; animation-delay:4s;">🦇</span>
-<span class="bat" style="top:8%;  animation-duration:22s; animation-delay:9s;">🦇</span>
-<span class="bat" style="top:35%; animation-duration:16s; animation-delay:13s;">🦇</span>
+<span class="bat" aria-hidden="true" style="top:12%; animation-duration:14s;">🦇</span>
+<span class="bat" aria-hidden="true" style="top:25%; animation-duration:18s; animation-delay:4s;">🦇</span>
+<span class="bat" aria-hidden="true" style="top:8%; animation-duration:22s; animation-delay:9s;">🦇</span>
+<span class="bat" aria-hidden="true" style="top:35%; animation-duration:16s; animation-delay:13s;">🦇</span>
 
-<div class="card">
-  <img src="logo.png" alt="Noxus Logo" class="logo-img">
+<main class="card">
+  <div class="logo-mark" role="img" aria-label="NOXUS Logo"><span aria-hidden="true">N</span></div>
   <h1>NOXUS</h1>
   <p class="subtitle">„Die Nacht ist unser.“ — Tritt unseren Reihen bei.</p>
 
-  <form id="applyForm">
+  <noscript><p class="noscript">Zum Senden der Bewerbung muss JavaScript im Browser aktiviert sein.</p></noscript>
+
+  <form id="applyForm" novalidate>
     <div class="field">
-      <label><span class="num">I.</span>Discord Name</label>
-      <input type="text" id="discordName" placeholder="z.B. schattenkaiser" required>
+      <label for="discordName"><span class="num">I.</span>Discord Name</label>
+      <input type="text" id="discordName" name="discordName" placeholder="z. B. schattenkaiser" maxlength="100" autocomplete="off" required>
+      <p class="field-error" id="discordNameError"></p>
     </div>
 
     <div class="field">
-      <label><span class="num">II.</span>Minecraft Name</label>
-      <input type="text" id="mcName" placeholder="z.B. Schattenkaiser99" required>
+      <label for="mcName"><span class="num">II.</span>Minecraft Name</label>
+      <input type="text" id="mcName" name="mcName" placeholder="z. B. Schattenkaiser99" maxlength="32" autocomplete="off" required>
+      <p class="field-error" id="mcNameError"></p>
     </div>
 
     <div class="row">
       <div class="field">
-        <label><span class="num">III.</span>Alter</label>
-        <input type="number" id="age" min="10" max="99" placeholder="z.B. 17" required>
+        <label for="age"><span class="num">III.</span>Alter</label>
+        <input type="text" id="age" name="age" inputmode="numeric" pattern="[0-9]*" placeholder="z. B. 17" autocomplete="off" data-min="10" data-max="99" aria-describedby="ageHint ageError" required>
+        <p class="field-hint" id="ageHint">Ganze Zahl von 10 bis 99 Jahren.</p>
+        <p class="field-error" id="ageError"></p>
       </div>
       <div class="field">
-        <label><span class="num">IV.</span>Schwächen</label>
-        <input type="text" id="weaknesses" placeholder="z.B. PvP, Redstone" required>
+        <label for="weaknesses"><span class="num">IV.</span>Schwächen</label>
+        <input type="text" id="weaknesses" name="weaknesses" placeholder="z. B. PvP, Redstone" maxlength="500" autocomplete="off" required>
+        <p class="field-error" id="weaknessesError"></p>
       </div>
     </div>
 
     <div class="field">
-      <label><span class="num">V.</span>Stärken</label>
-      <input type="text" id="strengths" placeholder="z.B. Bauen, Farmen" required>
+      <label for="strengths"><span class="num">V.</span>Stärken</label>
+      <input type="text" id="strengths" name="strengths" placeholder="z. B. Bauen, Farmen" maxlength="500" autocomplete="off" required>
+      <p class="field-error" id="strengthsError"></p>
     </div>
 
     <div class="field">
-      <label><span class="num">VI.</span>Grund, warum du zu uns willst</label>
-      <textarea id="reason" rows="4" placeholder="Überzeuge uns..." required></textarea>
+      <label for="reason"><span class="num">VI.</span>Grund, warum du zu uns willst</label>
+      <textarea id="reason" name="reason" rows="4" placeholder="Überzeuge uns …" maxlength="1000" aria-describedby="reasonHint reasonError" required></textarea>
+      <p class="field-hint" id="reasonHint">Maximal 1.000 Zeichen.</p>
+      <p class="field-error" id="reasonError"></p>
     </div>
 
     <button type="submit" id="submitBtn">☠︎ Bewerbung senden ☠︎</button>
-    <div class="status" id="status"></div>
+    <div class="status" id="status" role="status" aria-live="polite" aria-atomic="true"></div>
   </form>
 
   <div class="footer-line">Noxus Clan — Bewerbungsportal</div>
-</div>
+</main>
 
-<div class="overlay" id="overlay">
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-hidden="true">
   <div class="overlay-box">
-    <div class="skull">💀</div>
-    <h2>Die Nacht begrüßt dich!</h2>
+    <button type="button" class="overlay-close" id="closeOverlay" aria-label="Erfolgsmeldung schließen">×</button>
+    <div class="skull" aria-hidden="true">💀</div>
+    <h2 id="successTitle">Die Nacht begrüßt dich!</h2>
     <p>Deine Bewerbung wurde erfolgreich an den Rat der Noxus gesendet.</p>
   </div>
 </div>
 
 <script>
-/* ══════════════════════════════════════════════════════
-   ⚠️  HIER DEINE DISCORD WEBHOOK URL EINTRAGEN  ⚠️
-   ══════════════════════════════════════════════════════ */
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1553829867710316606/DIYNafz8X_CGD4vNh8E77hJ3h69NqsZ5gSAwSiWV0rzwV6aJt9Xo3vt4cgppwrbmm-Xx";
+(() => {
+  "use strict";
 
-const form    = document.getElementById("applyForm");
-const status  = document.getElementById("status");
-const btn     = document.getElementById("submitBtn");
-const overlay = document.getElementById("overlay");
+  // Hinweis: Ein öffentlich ausgeliefertes HTML kann Webhooks nicht geheim halten.
+  const WEBHOOK_URL = "https://discord.com/api/webhooks/1553829867710316606/DIYNafz8X_CGD4vNh8E77hJ3h69NqsZ5gSAwSiWV0rzwV6aJt9Xo3vt4cgppwrbmm-Xx";
+  const REQUEST_TIMEOUT_MS = 15000;
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  const form = document.getElementById("applyForm");
+  const statusBox = document.getElementById("status");
+  const submitButton = document.getElementById("submitBtn");
+  const overlay = document.getElementById("overlay");
+  const closeOverlayButton = document.getElementById("closeOverlay");
+  const fields = Array.from(form.querySelectorAll("input, textarea"));
+  const ageInput = document.getElementById("age");
+  const defaultButtonText = "☠︎ Bewerbung senden ☠︎";
 
-  if (WEBHOOK_URL === "HIER_DEINE_WEBHOOK_URL_EINTRAGEN") {
-    status.textContent = "⚠ Webhook-URL fehlt! Bitte im Code eintragen.";
-    status.className = "status err";
-    return;
+  let isSubmitting = false;
+  let overlayTimer = null;
+  let focusBeforeOverlay = null;
+
+  function setStatus(message, type = "") {
+    statusBox.textContent = message;
+    statusBox.className = `status${type ? ` ${type}` : ""}`;
   }
 
-  const data = {
-    discordName: document.getElementById("discordName").value.trim(),
-    mcName:      document.getElementById("mcName").value.trim(),
-    age:         document.getElementById("age").value.trim(),
-    weaknesses:  document.getElementById("weaknesses").value.trim(),
-    strengths:   document.getElementById("strengths").value.trim(),
-    reason:      document.getElementById("reason").value.trim()
-  };
+  function setFieldError(input, message) {
+    const errorBox = document.getElementById(`${input.id}Error`);
+    if (errorBox) errorBox.textContent = message;
+    input.setAttribute("aria-invalid", message ? "true" : "false");
+  }
 
-  btn.disabled = true;
-  btn.textContent = "Sende...";
-  status.textContent = "";
-  status.className = "status";
+  function validateField(input) {
+    const value = input.value.trim();
+    let message = "";
 
-  const embed = {
-    username: "Noxus Bewerbungsportal",
-    embeds: [{
-      title: "☠︎ Neue Bewerbung — Noxus ☠︎",
-      color: 8892574,
-      fields: [
-        { name: "💬 Discord Name",   value: data.discordName, inline: true },
-        { name: "⛏️ Minecraft Name", value: data.mcName,      inline: true },
-        { name: "🎂 Alter",          value: data.age,         inline: true },
-        { name: "💔 Schwächen",      value: data.weaknesses,  inline: false },
-        { name: "⚔️ Stärken",        value: data.strengths,   inline: false },
-        { name: "📜 Grund der Bewerbung", value: data.reason, inline: false }
-      ],
-      footer: { text: "„Die Nacht ist unser.“ — Noxus Clan" },
-      timestamp: new Date().toISOString()
-    }]
-  };
-
-  try {
-    const res = await fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(embed)
-    });
-
-    if (res.ok) {
-      overlay.classList.add("show");
-      form.reset();
-      setTimeout(() => overlay.classList.remove("show"), 4000);
-    } else {
-      throw new Error("HTTP " + res.status);
+    if (!value) {
+      message = input === ageInput ? "Bitte gib dein Alter ein." : "Bitte fülle dieses Feld aus.";
+    } else if (input === ageInput) {
+      if (!/^[0-9]{1,3}$/.test(value)) {
+        message = "Bitte gib dein Alter nur als ganze Zahl ein, z. B. 17.";
+      } else {
+        const age = Number(value);
+        const minAge = Number(input.dataset.min);
+        const maxAge = Number(input.dataset.max);
+        if (!Number.isSafeInteger(age) || age < minAge || age > maxAge) {
+          message = `Dein Alter muss zwischen ${minAge} und ${maxAge} Jahren liegen.`;
+        }
+      }
     }
-  } catch (err) {
-    status.textContent = "✖ Fehler beim Senden: " + err.message;
-    status.className = "status err";
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "☠︎ Bewerbung senden ☠︎";
+
+    setFieldError(input, message);
+    return !message;
   }
-});
+
+  function validateForm() {
+    let firstInvalid = null;
+    fields.forEach((input) => {
+      if (!validateField(input) && !firstInvalid) firstInvalid = input;
+    });
+    return firstInvalid;
+  }
+
+  fields.forEach((input) => {
+    input.setAttribute("aria-invalid", "false");
+    input.addEventListener("blur", () => {
+      if (input.value.trim() || input.getAttribute("aria-invalid") === "true") validateField(input);
+    });
+    input.addEventListener("input", () => {
+      if (input.getAttribute("aria-invalid") === "true") validateField(input);
+      if (statusBox.classList.contains("err")) setStatus("");
+    });
+  });
+
+  function hideOverlay() {
+    window.clearTimeout(overlayTimer);
+    overlay.classList.remove("show");
+    overlay.setAttribute("aria-hidden", "true");
+    if (focusBeforeOverlay && document.contains(focusBeforeOverlay)) focusBeforeOverlay.focus();
+  }
+
+  function showOverlay() {
+    focusBeforeOverlay = document.activeElement;
+    overlay.classList.add("show");
+    overlay.setAttribute("aria-hidden", "false");
+    closeOverlayButton.focus();
+    window.clearTimeout(overlayTimer);
+    overlayTimer = window.setTimeout(hideOverlay, 6000);
+  }
+
+  closeOverlayButton.addEventListener("click", hideOverlay);
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) hideOverlay();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && overlay.classList.contains("show")) hideOverlay();
+  });
+
+  function getDiscordError(response) {
+    if (response.status === 429) {
+      return new Error("Discord erhält gerade zu viele Anfragen. Bitte warte kurz und versuche es erneut.");
+    }
+    if (response.status === 400) {
+      return new Error("Discord konnte die Bewerbung nicht verarbeiten. Bitte prüfe deine Eingaben und versuche es erneut.");
+    }
+    if (response.status === 401 || response.status === 404) {
+      return new Error("Der Discord-Webhook ist ungültig oder wurde gelöscht. Bitte informiere die Clan-Leitung.");
+    }
+    return new Error(`Discord meldet gerade einen Fehler (${response.status}). Bitte versuche es später erneut.`);
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    setStatus("");
+    const firstInvalid = validateForm();
+    if (firstInvalid) {
+      setStatus("Bitte prüfe die markierten Felder.", "err");
+      firstInvalid.focus();
+      return;
+    }
+
+    if (!/^https:\/\/discord\.com\/api\/webhooks\//.test(WEBHOOK_URL)) {
+      setStatus("Der Discord-Webhook ist nicht eingerichtet. Bitte informiere die Clan-Leitung.", "err");
+      return;
+    }
+
+    const valueOf = (id) => document.getElementById(id).value.trim();
+    const data = {
+      discordName: valueOf("discordName"),
+      mcName: valueOf("mcName"),
+      age: String(Number(valueOf("age"))),
+      weaknesses: valueOf("weaknesses"),
+      strengths: valueOf("strengths"),
+      reason: valueOf("reason")
+    };
+
+    const payload = {
+      username: "Noxus Bewerbungsportal",
+      allowed_mentions: { parse: [] },
+      embeds: [{
+        title: "☠︎ Neue Bewerbung — Noxus ☠︎",
+        color: 8892574,
+        fields: [
+          { name: "💬 Discord Name", value: data.discordName, inline: true },
+          { name: "⛏️ Minecraft Name", value: data.mcName, inline: true },
+          { name: "🎂 Alter", value: data.age, inline: true },
+          { name: "💔 Schwächen", value: data.weaknesses, inline: false },
+          { name: "⚔️ Stärken", value: data.strengths, inline: false },
+          { name: "📜 Grund der Bewerbung", value: data.reason, inline: false }
+        ],
+        footer: { text: "„Die Nacht ist unser.“ — Noxus Clan" },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    isSubmitting = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Wird gesendet …";
+    form.setAttribute("aria-busy", "true");
+    setStatus("Deine Bewerbung wird gesendet …", "info");
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+
+      if (!response.ok) throw getDiscordError(response);
+
+      form.reset();
+      fields.forEach((input) => setFieldError(input, ""));
+      setStatus("Deine Bewerbung wurde erfolgreich gesendet.", "ok");
+      showOverlay();
+    } catch (error) {
+      if (error.name === "AbortError") {
+        setStatus("Das Senden hat zu lange gedauert. Bitte prüfe deine Internetverbindung und versuche es erneut.", "err");
+      } else if (error instanceof TypeError) {
+        setStatus("Die Bewerbung konnte nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es erneut.", "err");
+      } else {
+        setStatus(error.message || "Beim Senden ist ein Fehler aufgetreten. Bitte versuche es erneut.", "err");
+      }
+    } finally {
+      window.clearTimeout(timeout);
+      isSubmitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = defaultButtonText;
+      form.setAttribute("aria-busy", "false");
+    }
+  });
+})();
 </script>
 </body>
 </html>
